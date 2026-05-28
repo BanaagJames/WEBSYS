@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STI College Landing Page</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  overflow-x:hidden;
+  background:#fff;
+}
+
+/* ================= HEADER ================= */
+
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  padding:28px 55px;
+  transition:0.35s;
+  border-top:5px solid transparent;
+}
+
+header.scrolled{
+  background:rgba(1,90,155,0.96);
+  border-top:5px solid #FFD700;
+  padding:20px 55px;
+  box-shadow:0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-main{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:70px;
+}
+
+.nav-left-wrapper,
+.nav-right-wrapper{
+  width:450px;
+  display:flex;
+  flex-direction:column;
+}
+
+.nav-left-wrapper{
+  align-items:flex-end;
+}
+
+.top-label{
+  color:white;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:10px;
+  font-size:16px;
+}
+
+.nav-left,
+.nav-right{
+  display:flex;
+  gap:25px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,0.8);
+  width:100%;
+}
+
+.nav-left{
+  justify-content:flex-end;
+}
+
+.nav-left a,
+.nav-right a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+}
+
+.logo img{
+  height:65px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:100vh;
+  background:url('f.jpg') center/cover no-repeat;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  padding-bottom:70px;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0)
+  );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  color:white;
+  max-width:850px;
+  padding:20px;
+}
+
+.hero h1{
+  font-size:55px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.6;
+}
+
+.sti{
+  color:#FFD700;
+}
+
+.buttons{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+}
+
+.btn{
+  padding:12px 22px;
+  border:1px solid white;
+  background:transparent;
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn.primary{
+  background:#a51c30;
+  border-color:#a51c30;
+}
+
+.btn:hover{
+  opacity:0.85;
+}
+
+/* ================= WELCOME ================= */
+
+.welcome-section{
+  min-height:100vh;
+  background:url('bg2.png') center/cover no-repeat;
+  padding:90px 70px;
+  display:flex;
+  align-items:center;
+}
+
+.welcome-container{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+}
+
+.welcome-text{
+  flex:1;
+}
+
+.welcome-text h2{
+  color:#015a9b;
+  font-size:48px;
+  margin-bottom:25px;
+}
+
+.welcome-text p{
+  color:#444;
+  font-size:20px;
+  line-height:1.9;
+}
+
+.about-btn{
+  margin-top:30px;
+  padding:14px 28px;
+  border:none;
+  border-radius:8px;
+  background:#015a9b;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.about-btn:hover{
+  background:#0172c5;
+}
+
+.welcome-image{
+  flex:1;
+  position:relative;
+}
+
+.welcome-image img{
+  width:100%;
+  max-width:700px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* IMAGE BUTTONS */
+
+.nav-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:50%;
+  background:rgba(0,0,0,0.4);
+  color:white;
+  font-size:25px;
+  cursor:pointer;
+  opacity:0;
+  transition:0.3s;
+}
+
+.welcome-image:hover .nav-btn{
+  opacity:1;
+}
+
+.prev{
+  left:15px;
+}
+
+.next{
+  right:15px;
+}
+
+/* ================= SMALL SECTION ================= */
+
+.mini-section{
+  height:35vh;
+
+  background:linear-gradient(
+    to right,
+    #015a9b 40%,
+    #ffffff 40%,
+    #ffffff 100%
+  );
+}
+
+/* ================= NEWS SECTION ================= */
+
+.news-section{
+
+  padding:40px 70px 120px;
+
+  background:linear-gradient(
+    to right,
+    #015a9b 38%,
+    #ffffff 38%,
+    #ffffff 100%
+  );
+
+  margin:0;
+}
+.news-title{
+
+  color:#015a9b;
+
+  font-size:48px;
+
+  text-align:right;
+
+  margin-bottom:30px;
+
+  margin-top:0;
+
+  line-height:1;
+}
+
+/* NEWS SLIDER */
+.news-slider{
+  display:flex;
+  gap:30px;
+  overflow:hidden;
+
+  scroll-behavior:smooth;
+}
+
+.news-card{
+  min-width:calc(50% - 15px);
+  height:450px;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+}
+
+.news-card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:0.5s;
+}
+
+.news-card:hover img{
+  transform:scale(1.08);
+}
+.news-overlay{
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to top,
+    rgba(0,0,0,0.9),
+    rgba(0,0,0,0.2)
+  );
+
+  display:flex;
+  align-items:flex-end;
+  padding:30px;
+}
+
+.news-content{
+  color:white;
+}
+
+.news-content h3{
+  font-size:30px;
+  margin-bottom:15px;
+  line-height:1.2;
+}
+
+.news-content p{
+  font-size:17px;
+  line-height:1.6;
+  color:#e4e4e4;
+}
+
+/* HIDDEN PANELS */
+.hidden-card{
+  display:none;
+}
+
+@media(max-width:900px){
+
+  .news-slider{
+    flex-direction:column;
+  }
+
+  .news-card{
+    width:100%;
+  }
+
+}
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+  .nav-main{
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .welcome-container,
+  .news-container{
+    flex-direction:column;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .welcome-text h2{
+    font-size:35px;
+  }
+
+  .news-title{
+    font-size:35px;
+  }
+
+}
+
+/* ================= FOOTER ================= */
+
+.footer-section{
+
+  background:url('ibaba.png') center/cover no-repeat;
+
+  position:relative;
+
+  margin-top:0;
+}
+.footer-overlay{
+
+  background:rgba(0,0,0,0.55);
+
+  padding:70px 80px 40px;
+}
+
+.footer-content{
+
+  display:flex;
+  justify-content:space-between;
+  gap:60px;
+
+  flex-wrap:wrap;
+}
+
+.footer-column{
+
+  color:white;
+
+  max-width:320px;
+}
+
+.footer-column h3{
+
+  margin-bottom:15px;
+
+  font-size:20px;
+
+  color:#ffffff;
+}
+
+.footer-column p{
+
+  line-height:1.8;
+
+  color:#e2e2e2;
+
+  font-size:15px;
+}
+
+.footer-column a{
+
+  display:block;
+
+  color:#e2e2e2;
+
+  text-decoration:none;
+
+  margin-bottom:10px;
+
+  transition:0.3s;
+}
+
+.footer-column a:hover{
+
+  color:#FFD700;
+}
+
+.footer-bottom{
+
+  margin-top:50px;
+
+  border-top:1px solid rgba(255,255,255,0.2);
+
+  padding-top:20px;
+
+  text-align:center;
+}
+
+.footer-bottom p{
+
+  color:#e2e2e2;
+
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .footer-content{
+
+    flex-direction:column;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+
+  <div class="nav-main">
+
+    <div class="nav-left-wrapper">
+
+      <a href="#" class="top-label">Students</a>
+
+      <div class="nav-left">
+        <a href="#">Home</a>
+        <a href="#">Facilities</a>
+        <a href="#">Instructors</a>
+      </div>
+
+    </div>
+
+    <div class="logo">
+
+      <img src="STILOGO.png" alt="Logo">
+    </div>
+
+    <div class="nav-right-wrapper">
+
+      <a href="#" class="top-label">Faculty</a>
+
+      <div class="nav-right">
+        <a href="#">About IT</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Testimonies</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</header>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-content">
+
+    <h1>
+      Be Future-Ready.
+      <span class="sti">Be STI.</span>
+    </h1>
+
+    <p>
+      An institution committed to provide knowledge through
+      the development and delivery of superior learning systems.
+    </p>
+
+    <div class="buttons">
+      <button class="btn primary">Explore Programs</button>
+      <button class="btn">Contact Us</button>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- WELCOME -->
+<section class="welcome-section">
+
+  <div class="welcome-container">
+
+    <div class="welcome-text">
+
+      <h2>Welcome to STI College Calamba</h2>
+
+      <p>
+        At STI College Calamba, students are at the heart of everything we do.
+        We nurture passionate learners who are driven to explore, grow,
+        and succeed in an ever-changing world.
+      </p>
+
+      <button class="about-btn">ABOUT IT</button>
+
+    </div>
+
+    <div class="welcome-image">
+
+      <button class="nav-btn prev" onclick="changeImage(-1)">
+        &#10094;
+      </button>
+
+      <img id="welcomeImg" src="grouppic.png" alt="Group Photo">
+
+      <button class="nav-btn next" onclick="changeImage(1)">
+        &#10095;
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- UNIVERSITY NEWS -->
+<section class="news-section">
+
+  <h2 class="news-title">College News</h2>
+
+  <div class="news-slider" id="newsSlider">
+
+    <!-- PANEL 1 -->
+    <div class="news-card active">
+
+      <img src="news1.jpg" alt="News 1">
+
+      <div class="news-overlay">
+        <div class="news-content">
+
+          <h3>
+            𝐂𝐈𝐍𝐄𝐏𝐄𝐋𝐈𝐊𝐔𝐋𝐀: 𝐁𝐌𝐌𝐀 𝐅𝐈𝐋𝐌 𝐅𝐄𝐒𝐓𝐈𝐕𝐀𝐋 2026
+          </h3>
+
+          <p>
+            Tickets are now sale at the Main Lobby of
+            𝐒𝐓𝐈 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 𝐂𝐚𝐥𝐚𝐦𝐛𝐚.
+            Experience 𝐇𝐮𝐧𝐲𝐨 until 𝐌𝐚𝐲 30, 2026.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PANEL 2 -->
+    <div class="news-card active">
+
+      <img src="news2.jpg" alt="News 2">
+
+      <div class="news-overlay">
+        <div class="news-content">
+
+          <h3>
+            Heto na, may ESPASYO na ba ang lahat?
+          </h3>
+
+          <p>
+            ESPASYO: Kahit Sino P’wede
+            A Community Performance Arts Event
+            in cooperation with the City Government of Calamba.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PANEL 3 -->
+    <div class="news-card hidden-card">
+
+      <img src="news3.jpg" alt="News 3">
+
+      <div class="news-overlay">
+        <div class="news-content">
+
+          <h3>
+            𝐍𝐨𝐰 𝐚𝐜𝐜𝐞𝐩𝐭𝐢𝐧𝐠 𝐒𝐞𝐧𝐢𝐨𝐫 𝐇𝐢𝐠𝐡 𝐚𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 𝐞𝐧𝐫𝐨𝐥𝐞𝐞𝐬
+          </h3>
+
+          <p>
+            Industry-relevant skills, structured learning,
+            and a supportive campus environment.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PANEL 4 -->
+    <div class="news-card hidden-card">
+
+      <img src="news4.jpg" alt="News 4">
+
+      <div class="news-overlay">
+        <div class="news-content">
+
+          <h3>
+            𝗔𝗥𝗘 𝗬𝗢𝗨 𝗥𝗘𝗔𝗗𝗬 𝗧𝗢 𝗦𝗛𝗔𝗞𝗘 𝗨𝗣 𝗧𝗛𝗘 𝗖𝗢𝗠𝗣𝗘𝗧𝗜𝗢𝗡?
+          </h3>
+
+          <p>
+            Join the Tea-rific Cup Milktea Competition
+            this THM Week 2026 at STI College Calamba.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PANEL 5 -->
+    <div class="news-card hidden-card">
+
+      <img src="news5.jpg" alt="News 5">
+
+      <div class="news-overlay">
+        <div class="news-content">
+
+          <h3>
+            𝐂𝐚𝐬𝐡𝐢𝐞𝐫 𝐎𝐟𝐟𝐢𝐜𝐞 𝐀𝐝𝐯𝐢𝐬𝐨𝐫𝐲
+          </h3>
+
+          <p>
+            Over-the-counter transactions at the Cashier’s Office
+            will be temporarily unavailable from May 25–27, 2026.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<script>
+
+/* HEADER EFFECT */
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  header.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* IMAGE SLIDER */
+
+const images = [
+  "grouppic.png",
+  "grouppic.jpg",
+  "grouppic1.jpg",
+  "grouppic2.jpg"
+];
+
+let currentIndex = 0;
+
+function changeImage(direction){
+
+  currentIndex += direction;
+
+  if(currentIndex < 0){
+    currentIndex = images.length - 1;
+  }
+
+  if(currentIndex >= images.length){
+    currentIndex = 0;
+  }
+
+  document.getElementById("welcomeImg").src = images[currentIndex];
+}
+/* ================= HOVER NEXT PHOTO SLIDER ================= */
+
+const slider = document.getElementById("newsSlider");
+
+const newsData = [
+
+  {
+    image: "news1.jpg",
+    title: "𝐂𝐈𝐍𝐄𝐏𝐄𝐋𝐈𝐊𝐔𝐋𝐀: 𝐁𝐌𝐌𝐀 𝐅𝐈𝐋𝐌 𝐅𝐄𝐒𝐓𝐈𝐕𝐀𝐋 2026",
+    desc: "Tickets are now sale at the Main Lobby of STI College Calamba."
+  },
+
+  {
+    image: "news2.jpg",
+    title: "Heto na, may ESPASYO na ba ang lahat?",
+    desc: "ESPASYO: Kahit Sino P’wede A Community Performance Arts Event."
+  },
+
+  {
+    image: "news3.jpg",
+    title: "𝐍𝐨𝐰 𝐚𝐜𝐜𝐞𝐩𝐭𝐢𝐧𝐠 𝐒𝐞𝐧𝐢𝐨𝐫 𝐇𝐢𝐠𝐡 𝐚𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 𝐞𝐧𝐫𝐨𝐥𝐞𝐞𝐬",
+    desc: "Industry-relevant skills and supportive campus environment."
+  },
+
+  {
+    image: "news4.jpg",
+    title: "𝗔𝗥𝗘 𝗬𝗢𝗨 𝗥𝗘𝗔𝗗𝗬 𝗧𝗢 𝗦𝗛𝗔𝗞𝗘 𝗨𝗣 𝗧𝗛𝗘 𝗖𝗢𝗠𝗣𝗘𝗧𝗜𝗧𝗜𝗢𝗡?",
+    desc: "Join the Tea-rific Cup Milktea Competition this THM Week 2026."
+  },
+
+  {
+    image: "news5.jpg",
+    title: "𝐂𝐚𝐬𝐡𝐢𝐞𝐫 𝐎𝐟𝐟𝐢𝐜𝐞 𝐀𝐝𝐯𝐢𝐬𝐨𝐫𝐲",
+    desc: "Cashier’s Office transactions unavailable from May 25–27, 2026."
+  }
+
+];
+
+/* CREATE CARD */
+
+function createNewsCard(news){
+
+  return `
+
+    <div class="news-card">
+
+      <img src="${news.image}" alt="news">
+
+      <div class="news-overlay">
+
+        <div class="news-content">
+
+          <h3>${news.title}</h3>
+
+          <p>${news.desc}</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  `;
+}
+
+/* ADD ALL CARDS */
+
+let cardsHTML = "";
+
+newsData.forEach(news => {
+  cardsHTML += createNewsCard(news);
+});
+
+slider.innerHTML = cardsHTML;
+
+/* ================= SLIDE SETTINGS ================= */
+
+let currentSlide = 0;
+
+const cardWidth =
+  slider.querySelector(".news-card").offsetWidth + 30;
+
+/* HOVER = NEXT */
+
+slider.addEventListener("mouseenter", () => {
+
+  slider.autoSlide = setInterval(() => {
+
+    currentSlide++;
+
+    if(currentSlide >= newsData.length - 1){
+      currentSlide = 0;
+    }
+
+    slider.scrollTo({
+      left: currentSlide * cardWidth,
+      behavior: "smooth"
+    });
+
+  }, 2000);
+
+});
+
+/* STOP WHEN CURSOR LEAVES */
+
+slider.addEventListener("mouseleave", () => {
+
+  clearInterval(slider.autoSlide);
+
+});
+</script>
+
+<!-- FOOTER -->
+<footer class="footer-section">
+
+  <div class="footer-overlay">
+
+    <div class="footer-content">
+
+      <!-- LEFT -->
+      <div class="footer-column">
+
+        <h3>Calamba</h3>
+
+        <p>
+          Purok 1 National Hi-Way, Barangay Uno, Calamba, Philippines, 4027
+          <br>
+         0998 964 0644
+        </p>
+
+        <br>
+
+        <p>
+          STI Academic Center - STI CALAMBA has been providing quality education for more than 31 years now. 
+        </p>
+
+      </div>
+
+      <!-- CENTER -->
+      <div class="footer-column">
+
+        <h3>Quick Links</h3>
+
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="footer-column">
+
+        <h3>Affiliates</h3>
+
+        <a href="#">STI College</a>
+        <a href="#">STI West Negros University</a>
+        <a href="#">STI Academic Center</a>
+
+      </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+
+      <p>
+        STI College Calamba © 2026. All Rights Reserved.
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
