@@ -4,1543 +4,1109 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>STI College Landing Page</title>
-
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, Helvetica, sans-serif;
-}
-
-body{
-  overflow-x:hidden;
-  background:#fff;
-}
-
-/* ================= HEADER ================= */
-
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:1000;
-  padding:28px 55px;
-  transition:0.35s;
-  border-top:5px solid transparent;
-}
-
-header.scrolled{
-  background:rgba(1,90,155,0.96);
-  border-top:5px solid #FFD700;
-  padding:20px 55px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.2);
-}
-
-.nav-main{
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  gap:70px;
-}
-
-.nav-left-wrapper,
-.nav-right-wrapper{
-  width:450px;
-  display:flex;
-  flex-direction:column;
-}
-
-.nav-left-wrapper{
-  align-items:flex-end;
-}
-
-.top-label{
-  color:white;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  margin-bottom:10px;
-  font-size:16px;
-}
-
-.nav-left,
-.nav-right{
-  display:flex;
-  gap:25px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,0.8);
-  width:100%;
-}
-
-.nav-left{
-  justify-content:flex-end;
-}
-
-.nav-left a,
-.nav-right a{
-  color:white;
-  text-decoration:none;
-  font-size:16px;
-  transition:0.3s;
-}
-
-.nav-left a:hover,
-.nav-right a:hover{
-  color:#FFD700;
-}
-
-.logo img{
-  height:65px;
-}
-
-/* ================= SPA SECTION SYSTEM ================= */
-
-.page-section{
-  display:none;
-  min-height:100vh;
-}
-
-.active-section{
-  display:block;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  min-height:100vh;
-  background:url('f.jpg') center/cover no-repeat;
-  position:relative;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  padding-bottom:70px;
-}
-
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,0.85),
-    rgba(0,0,0,0.35),
-    rgba(0,0,0,0)
-  );
-}
-
-.hero-content{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  color:white;
-  max-width:850px;
-  padding:20px;
-}
-
-.hero h1{
-  font-size:55px;
-  margin-bottom:15px;
-}
-
-.hero p{
-  font-size:18px;
-  line-height:1.6;
-}
-
-.sti{
-  color:#FFD700;
-}
-
-.buttons{
-  margin-top:30px;
-  display:flex;
-  justify-content:center;
-  gap:15px;
-}
-
-.btn{
-  padding:12px 22px;
-  border:1px solid white;
-  background:transparent;
-  color:white;
-  cursor:pointer;
-  transition:0.3s;
-}
-
-.btn.primary{
-  background:#a51c30;
-  border-color:#a51c30;
-}
-
-.btn:hover{
-  opacity:0.85;
-}
-
-/* ================= WELCOME ================= */
-
-.welcome-section{
-  min-height:100vh;
-  background:url('bg2.png') center/cover no-repeat;
-  padding:90px 70px;
-  display:flex;
-  align-items:center;
-}
-
-.welcome-container{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:60px;
-}
-
-.welcome-text{
-  flex:1;
-}
-
-.welcome-text h2{
-  color:#015a9b;
-  font-size:48px;
-  margin-bottom:25px;
-}
-
-.welcome-text p{
-  color:#444;
-  font-size:20px;
-  line-height:1.9;
-}
-
-.about-btn{
-  margin-top:30px;
-  padding:14px 28px;
-  border:none;
-  border-radius:8px;
-  background:#015a9b;
-  color:white;
-  cursor:pointer;
-  font-weight:bold;
-  transition:0.3s;
-}
-
-.about-btn:hover{
-  background:#0172c5;
-}
-
-.welcome-image{
-  flex:1;
-  position:relative;
-}
-
-.welcome-image img{
-  width:100%;
-  max-width:700px;
-  border-radius:20px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* IMAGE BUTTONS */
-
-.nav-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:50%;
-  background:rgba(0,0,0,0.4);
-  color:white;
-  font-size:25px;
-  cursor:pointer;
-  opacity:0;
-  transition:0.3s;
-}
-
-.welcome-image:hover .nav-btn{
-  opacity:1;
-}
-
-.prev{
-  left:15px;
-}
-
-.next{
-  right:15px;
-}
-
-/* ================= NEWS ================= */
-
-.news-section{
-  padding:40px 70px 120px;
-  background:linear-gradient(
-    to right,
-    #015a9b 38%,
-    #ffffff 38%,
-    #ffffff 100%
-  );
-}
-
-.news-title{
-  color:#015a9b;
-  font-size:48px;
-  text-align:right;
-  margin-bottom:30px;
-}
-
-.news-slider{
-  display:flex;
-  gap:30px;
-  overflow:hidden;
-  scroll-behavior:smooth;
-}
-
-.news-card{
-  min-width:calc(50% - 15px);
-  height:450px;
-  flex-shrink:0;
-  position:relative;
-  overflow:hidden;
-  border-radius:14px;
-}
-
-.news-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.news-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(0,0,0,0.9),
-    rgba(0,0,0,0.2)
-  );
-  display:flex;
-  align-items:flex-end;
-  padding:30px;
-}
-
-.news-content{
-  color:white;
-}
-
-.news-content h3{
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.news-content p{
-  line-height:1.6;
-}
-
-/* ================= OTHER PAGES ================= */
-
-.section-page{
-  min-height:100vh;
-
-  padding:170px 80px 120px;
-
-  background:url('headerbg.png') center center;
-  background-size:cover;
-  background-repeat:no-repeat;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-
-  text-align:center;
-
-  position:relative;
-}
-/* ================= CONTACT IMAGE ================= */
-
-.contact-image{
-
-  width:180px;
-
-  margin-bottom:25px;
-
-  border-radius:20px;
-
-  box-shadow:0 10px 25px rgba(0,0,0,0.2);
-
-  object-fit:cover;
-}
-
-.section-page h1{
-  font-size:55px;
-  color:#015a9b;
-
-  margin-bottom:35px;
-
-  text-transform:uppercase;
-  letter-spacing:3px;
-
-  text-align:center;
-}
-
-.section-page p{
-  font-size:20px;
-  line-height:1.8;
-  color:#444;
-  max-width:900px;
-text-align:justify;
-}
-/* ================= FEATURE CARDS ================= */
-
-.feature-container{
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:35px;
-  flex-wrap:wrap;
-
-  margin-top:70px;
-}
-
-.feature-card{
-  width:320px;
-  height:420px;
-
-  border:5px solid #015a9b;
-  border-radius:18px;
-
-  overflow:hidden;
-  position:relative;
-
-  cursor:pointer;
-
-  background:white;
-
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-.feature-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-
-  transition:0.6s;
-}
-
-.feature-title{
-  position:absolute;
-  bottom:0;
-  width:100%;
-
-  background:#015a9b;
-  color:white;
-
-  padding:18px;
-
-  font-size:22px;
-  font-weight:bold;
-  text-align:center;
-
-  transition:0.5s;
-}
-
-.feature-description{
-  position:absolute;
-
-  left:0;
-  bottom:-100%;
-
-  width:100%;
-  height:100%;
-
-  background:rgba(1,90,155,0.95);
-
-  color:white;
-
-  padding:35px 25px;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  font-size:18px;
-  line-height:1.8;
-
-  transition:0.6s;
-}
-
-/* HOVER EFFECT */
-
-.feature-card:hover img{
-  transform:translateY(-40px);
-}
-
-.feature-card:hover .feature-title{
-  opacity:0;
-}
-
-.feature-card:hover .feature-description{
-  bottom:0;
-}
-/* ================= FOOTER ================= */
-
-.footer-section{
-  background:url('ibaba.png') center/cover no-repeat;
-  position:relative;
-}
-
-.footer-overlay{
-  background:rgba(0,0,0,0.60);
-  padding:70px 80px 35px;
-}
-
-.footer-content{
-  display:flex;
-  justify-content:space-between;
-  gap:60px;
-  flex-wrap:wrap;
-}
-
-.footer-column{
-  color:white;
-  max-width:320px;
-}
-
-.footer-column h3{
-  margin-bottom:18px;
-  font-size:22px;
-  color:#FFD700;
-}
-
-.footer-column p{
-  line-height:1.9;
-  color:#e2e2e2;
-  font-size:16px;
-}
-
-.footer-column a{
-  display:block;
-  color:#e2e2e2;
-  text-decoration:none;
-  margin-bottom:12px;
-  transition:0.3s;
-}
-
-.footer-column a:hover{
-  color:#FFD700;
-  padding-left:5px;
-}
-
-/* ================= FOOTER BOTTOM ================= */
-
-.footer-bottom{
-  margin-top:45px;
-  padding-top:25px;
-
-  border-top:1px solid rgba(255,255,255,0.2);
-
-  text-align:center;
-}
-
-.footer-bottom p{
-  color:#d9d9d9;
-  font-size:15px;
-  letter-spacing:1px;
-}/* ================= RESPONSIVE ================= */
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{overflow-x:hidden;background:#fff;}
+
+/* ===== HEADER ===== */
+header{position:fixed;top:0;width:100%;z-index:1000;padding:28px 55px;background:transparent;transition:background 0.4s ease,padding 0.4s ease,border-top 0.4s ease,box-shadow 0.4s ease;border-top:2px solid transparent;}
+header.scrolled{background:#015a9b;border-top:2px solid #FFD700;padding:20px 55px;box-shadow:0 2px 15px rgba(0,0,0,0.2);}
+.nav-main{display:flex;justify-content:center;align-items:flex-start;gap:70px;}
+.nav-left-wrapper,.nav-right-wrapper{width:450px;display:flex;flex-direction:column;}
+.nav-left-wrapper{align-items:flex-end;}
+.top-label{color:white;text-decoration:none;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;font-size:16px;}
+.nav-left,.nav-right{display:flex;gap:25px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.8);width:100%;}
+.nav-left{justify-content:flex-end;}
+.nav-left a,.nav-right a{color:white;text-decoration:none;font-size:16px;transition:0.3s;}
+.nav-left a:hover,.nav-right a:hover{color:#FFD700;}
+.logo img{height:65px;}
+
+/* ===== DROPDOWN —  ===== */
+.dropdown{position:relative;}
+.dropdown-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;}
+.dropdown-toggle svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.3s;}
+.dropdown:hover .dropdown-toggle svg{transform:rotate(180deg);}
+.dropdown-content{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(8px);min-width:260px;background:#fff;border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,0.18);opacity:0;visibility:hidden;transition:all 0.3s;z-index:9999;padding:8px;border-top:3px solid #FFD700;}
+.dropdown:hover .dropdown-content{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.dropdown-content a{display:flex;align-items:center;gap:12px;padding:11px 14px;color:#015a9b;text-decoration:none;border-radius:9px;font-size:15px;font-weight:500;transition:0.2s;}
+.dropdown-content a:hover{background:#eaf2fb;}
+.floor-icon{width:34px;height:34px;border-radius:8px;background:#eaf2fb;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+
+/* ===== SPA ===== */
+.page-section{display:none;min-height:100vh;}
+.active-section{display:block;}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;background:url('f.jpg') center/cover no-repeat;position:relative;display:flex;justify-content:center;align-items:flex-end;padding-bottom:70px;}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0.35),rgba(0,0,0,0));}
+.hero-content{position:relative;z-index:2;text-align:center;color:white;max-width:850px;padding:20px;}
+.hero h1{font-size:55px;margin-bottom:15px;}
+.hero p{font-size:18px;line-height:1.6;}
+.sti{color:#FFD700;}
+.buttons{margin-top:30px;display:flex;justify-content:center;gap:15px;}
+.btn{padding:12px 22px;border:1px solid white;background:transparent;color:white;cursor:pointer;transition:0.3s;}
+.btn.primary{background:#a51c30;border-color:#a51c30;}
+.btn:hover{opacity:0.85;}
+
+/* ===== WELCOME ===== */
+.welcome-section{min-height:100vh;background:url('bg2.png') center/cover no-repeat;padding:90px 70px;display:flex;align-items:center;}
+.welcome-container{width:100%;display:flex;align-items:center;justify-content:space-between;gap:60px;}
+.welcome-text{flex:1;}
+.welcome-text h2{color:#015a9b;font-size:48px;margin-bottom:25px;}
+.welcome-text p{color:#444;font-size:20px;line-height:1.9;}
+.about-btn{margin-top:30px;padding:14px 28px;border:none;border-radius:8px;background:#015a9b;color:white;cursor:pointer;font-weight:bold;transition:0.3s;}
+.about-btn:hover{background:#0172c5;}
+.welcome-image{flex:1;position:relative;}
+.welcome-image img{width:100%;max-width:700px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+.nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:45px;height:45px;border:none;border-radius:50%;background:rgba(0,0,0,0.4);color:white;font-size:25px;cursor:pointer;opacity:0;transition:0.3s;}
+.welcome-image:hover .nav-btn{opacity:1;}
+.prev{left:15px;}
+.next{right:15px;}
+
+/* ===== NEWS ===== */
+.news-section{padding:40px 70px 120px;background:linear-gradient(to right,#015a9b 38%,#ffffff 38%,#ffffff 100%);}
+.news-title{color:#015a9b;font-size:48px;text-align:right;margin-bottom:30px;}
+.news-slider{display:flex;gap:30px;overflow:hidden;scroll-behavior:smooth;}
+.news-card{min-width:calc(50% - 15px);height:450px;flex-shrink:0;position:relative;overflow:hidden;border-radius:14px;}
+.news-card img{width:100%;height:100%;object-fit:cover;}
+.news-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9),rgba(0,0,0,0.2));display:flex;align-items:flex-end;padding:30px;}
+.news-content{color:white;}
+.news-content h3{font-size:28px;margin-bottom:15px;}
+.news-content p{line-height:1.6;}
+
+/* ===== SECTION PAGE (generic header wrapper) ===== */
+.section-page{min-height:100vh;padding:170px 80px 120px;background:url('headerbg.png') center center;background-size:cover;background-repeat:no-repeat;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;}
+.section-page h1{font-size:55px;color:#015a9b;margin-bottom:35px;text-transform:uppercase;letter-spacing:3px;text-align:center;}
+.section-page p{font-size:20px;line-height:1.8;color:#444;max-width:900px;text-align:justify;}
+
+/* ===== ABOUT IT HEADER ===== */
+.aboutit-header{min-height:60vh;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url("abtit.png");background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 50px 80px;}
+.aboutit-header h1{color:white;font-size:60px;margin-bottom:20px;}
+.aboutit-header p{color:white;font-size:20px;max-width:800px;text-align:center;}
+
+/* ===== ABOUT IT BODY ===== */
+.ait-about-body{padding:80px 8%;background:white;display:flex;align-items:center;gap:70px;}
+.ait-about-text{flex:1;}
+.ait-about-text h2{color:#015a9b;font-size:42px;margin-bottom:22px;line-height:1.2;}
+.ait-about-text p{color:#555;font-size:17px;line-height:1.9;margin-bottom:16px;}
+.ait-about-img-wrap{flex:1;position:relative;}
+.ait-about-img-wrap img{width:100%;border-radius:16px;display:block;box-shadow:0 20px 50px rgba(0,0,0,.12);position:relative;z-index:1;}
+.ait-about-img-wrap::before{content:"";width:160px;height:160px;background:#015a9b;position:absolute;top:-18px;left:-18px;z-index:0;border-radius:4px;}
+.ait-about-img-wrap::after{content:"";width:100px;height:100px;background:#FFD700;position:absolute;right:-18px;bottom:-18px;z-index:0;border-radius:4px;}
+.ait-tracks-section{padding:80px 8% 100px;background:#f4f7fb;}
+.ait-tracks-section>h2{text-align:center;color:#015a9b;font-size:42px;margin-bottom:10px;}
+.ait-tracks-section>p{text-align:center;color:#888;font-size:16px;margin-bottom:55px;}
+.ait-tracks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.ait-track-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.08);border-bottom:5px solid #015a9b;transition:transform .3s,box-shadow .3s;}
+.ait-track-card:hover{transform:translateY(-10px);box-shadow:0 22px 50px rgba(0,0,0,.14);}
+.ait-track-icon-bar{background:#015a9b;padding:32px;display:flex;align-items:center;justify-content:center;font-size:54px;}
+.ait-track-body{padding:30px 28px 36px;}
+.ait-track-tag{display:inline-block;background:#eaf2fb;color:#015a9b;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:14px;}
+.ait-track-body h3{color:#015a9b;font-size:22px;margin-bottom:14px;}
+.ait-track-body p{color:#666;font-size:15px;line-height:1.8;margin-bottom:18px;}
+.ait-skill-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.ait-skill-pill{background:#f0f4f8;color:#015a9b;font-size:12px;padding:5px 13px;border-radius:20px;font-weight:600;border:1px solid #d0e4f4;}
+.ait-cta{background:#015a9b;padding:80px 8%;text-align:center;}
+.ait-cta h2{color:white;font-size:40px;margin-bottom:14px;}
+.ait-cta p{color:rgba(255,255,255,.78);font-size:17px;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto;}
+.ait-cta-btn{display:inline-block;background:#FFD700;color:#1a1a1a;padding:15px 40px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;border:none;letter-spacing:0.5px;transition:0.3s;margin:0 8px;}
+.ait-cta-btn.outline{background:transparent;color:white;border:2px solid rgba(255,255,255,.5);}
+.ait-cta-btn:hover{opacity:.88;transform:translateY(-2px);}
+
+/* ===== FACILITIES HEADER ===== */
+.facilities-header{min-height:60vh;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url("facilities.jpg");background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 50px 80px;}
+.facilities-header h1{color:white;font-size:60px;margin-bottom:20px;}
+.facilities-header p{color:white;font-size:20px;max-width:800px;text-align:center;}
+
+/* ===== FLOOR NAV TABS ===== */
+.floor-nav{display:flex;justify-content:center;gap:0;background:#fff;border-bottom:2px solid #eaf2fb;padding:0 5%;}
+.floor-nav-btn{padding:18px 30px;border:none;background:transparent;color:#666;font-size:15px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:0.2s;letter-spacing:0.3px;}
+.floor-nav-btn:hover{color:#015a9b;}
+.floor-nav-btn.active-tab{color:#015a9b;border-bottom-color:#015a9b;}
+
+/* ===== FLOOR SECTIONS ===== */
+.floor-section{display:none;}
+.floor-section.active-floor{display:block;animation:fadeIn .4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* ===== FACILITY CARDS — NEW GRID STYLE ===== */
+.facility-grid-header{padding:60px 8% 20px;background:#f8fafc;}
+.facility-grid-header h2{color:#015a9b;font-size:42px;margin-bottom:10px;}
+.facility-grid-header p{color:#777;font-size:17px;}
+.facility-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0;background:#f4f7fb;padding:0 5% 80px;}
+.fac-card{background:white;border-radius:0;overflow:hidden;transition:box-shadow 0.3s,transform 0.3s;border:1px solid #eaf2fb;margin:12px;}
+.fac-card:hover{box-shadow:0 16px 40px rgba(1,90,155,0.13);transform:translateY(-4px);}
+.fac-card-img{width:100%;height:220px;object-fit:cover;display:block;}
+.fac-card-body{padding:24px 26px 28px;}
+.fac-card-tag{display:inline-block;background:#eaf2fb;color:#015a9b;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:12px;}
+.fac-card-body h3{color:#015a9b;font-size:21px;margin-bottom:10px;}
+.fac-card-body p{color:#666;font-size:15px;line-height:1.75;}
+.fac-card-accent{height:4px;background:linear-gradient(90deg,#015a9b,#FFD700);}
+
+/* ===== INSTRUCTORS HEADER ===== */
+.instructors-header{min-height:60vh;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url("faculty.png");background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 50px 80px;}
+.instructors-header h1{color:white;font-size:60px;margin-bottom:20px;}
+.instructors-header p{color:white;font-size:20px;max-width:800px;text-align:center;}
+
+/* ===== CONTACT ===== */
+.contact-header{min-height:60vh;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url("contactus.png");background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 50px 80px;}
+.contact-header h1{color:white;font-size:60px;margin-bottom:20px;}
+.contact-header p{color:white;font-size:20px;max-width:800px;text-align:center;}
+.contact-body-new{background:linear-gradient(135deg,#eaf2fb 0%,#f8f6f0 100%);padding:80px 8%;position:relative;overflow:hidden;}
+.contact-body-new::before{content:"";position:absolute;top:-80px;right:-80px;width:340px;height:340px;background:radial-gradient(circle,rgba(1,90,155,0.08) 0%,transparent 70%);border-radius:50%;}
+.contact-body-new::after{content:"";position:absolute;bottom:-60px;left:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(255,215,0,0.1) 0%,transparent 70%);border-radius:50%;}
+.contact-body-new .contact-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:40px;max-width:1150px;margin:0 auto;align-items:start;position:relative;z-index:1;}
+.contact-info-panel{background:#015a9b;border-radius:0 0 80px 0;padding:50px 35px 50px 40px;color:white;position:relative;overflow:hidden;min-height:560px;display:flex;flex-direction:column;justify-content:space-between;}
+.contact-info-panel::before{content:"";position:absolute;bottom:-40px;right:-40px;width:180px;height:180px;border:30px solid rgba(255,215,0,0.2);border-radius:50%;}
+.contact-info-panel::after{content:"";position:absolute;top:-30px;left:-30px;width:120px;height:120px;border:20px solid rgba(255,255,255,0.07);border-radius:50%;}
+.contact-info-panel h2{font-size:28px;font-weight:900;color:#FFD700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;position:relative;z-index:1;}
+.contact-info-panel .panel-tagline{font-size:14px;color:rgba(255,255,255,0.65);margin-bottom:44px;line-height:1.7;position:relative;z-index:1;}
+.contact-info-top{position:relative;z-index:1;}
+.contact-info-bottom{position:relative;z-index:1;}
+.contact-info-item{display:flex;align-items:flex-start;gap:18px;margin-bottom:28px;}
+.contact-info-icon{width:40px;height:40px;background:rgba(255,215,0,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;border:1px solid rgba(255,215,0,0.3);}
+.contact-info-text strong{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#FFD700;margin-bottom:3px;}
+.contact-info-text span{font-size:14px;color:rgba(255,255,255,0.88);line-height:1.6;}
+.contact-divider{border:none;border-top:1px solid rgba(255,255,255,0.15);margin:32px 0;}
+.contact-social-row{display:flex;gap:10px;}
+.contact-social-btn{width:38px;height:38px;background:rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer;transition:0.3s;border:1px solid rgba(255,255,255,0.2);color:white;text-decoration:none;font-weight:700;}
+.contact-social-btn:hover{background:#FFD700;color:#015a9b;border-color:#FFD700;transform:translateY(-3px);}
+.contact-form-panel{background:white;border-radius:0 80px 0 0;padding:50px 50px 45px;box-shadow:0 20px 60px rgba(1,90,155,0.1);position:relative;}
+.contact-form-panel::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:linear-gradient(90deg,#015a9b 0%,#FFD700 50%,#015a9b 100%);border-radius:0 80px 0 0;}
+.contact-form-panel h2{font-size:28px;font-weight:900;color:#015a9b;margin-bottom:5px;letter-spacing:0.5px;}
+.contact-form-panel .form-tagline{font-size:14px;color:#aaa;margin-bottom:35px;padding-bottom:25px;border-bottom:1px solid #f0f0f0;}
+.cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px;}
+.cf-grid .cf-group.full{grid-column:1/-1;}
+.cf-group{margin-bottom:20px;position:relative;}
+.cf-group label{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:#015a9b;margin-bottom:7px;}
+.cf-group label .lbl-icon{font-size:13px;opacity:0.7;}
+.cf-group input,.cf-group select,.cf-group textarea{width:100%;padding:13px 16px;border:2px solid #eef2f7;border-radius:6px;font-size:15px;color:#333;background:#fafcff;transition:all 0.25s;outline:none;font-family:inherit;resize:vertical;appearance:none;-webkit-appearance:none;}
+.cf-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23015a9b' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-color:#fafcff;padding-right:40px;cursor:pointer;}
+.cf-group input:focus,.cf-group select:focus,.cf-group textarea:focus{border-color:#FFD700;background:#fff;box-shadow:0 0 0 3px rgba(255,215,0,0.15);}
+.cf-group input::placeholder,.cf-group textarea::placeholder{color:#c8d4e0;font-style:italic;}
+.cf-bar{height:2px;background:#FFD700;width:0;transition:width 0.3s;margin-top:-2px;border-radius:0 0 3px 3px;}
+.cf-submit-btn{width:100%;padding:15px;background:#015a9b;color:white;border:none;border-radius:6px;font-size:15px;font-weight:800;letter-spacing:2px;cursor:pointer;transition:all 0.3s;text-transform:uppercase;margin-top:10px;position:relative;overflow:hidden;}
+.cf-submit-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,215,0,0.25) 50%,transparent 100%);transform:translateX(-100%);transition:transform 0.5s;}
+.cf-submit-btn:hover::after{transform:translateX(100%);}
+.cf-submit-btn:hover{background:#FFD700;color:#1a1a1a;box-shadow:0 8px 25px rgba(255,215,0,0.4);transform:translateY(-2px);}
+.cf-success{display:none;margin-top:16px;padding:14px 20px;background:linear-gradient(135deg,#e8f8f0,#d4f0e3);border-left:4px solid #1a7a40;border-radius:6px;color:#1a7a40;font-size:14px;font-weight:700;letter-spacing:0.5px;}
+
+/* ===== TESTIMONIALS ===== */
+.testimonial-header{min-height:60vh;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url("testi.png");background-size:cover;background-position:center;background-repeat:no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 50px 80px;}
+.testimonial-header h1{color:white;font-size:60px;margin-bottom:20px;}
+.testimonial-header p{color:white;font-size:20px;max-width:800px;text-align:center;}
+.testi-body{background:#f4f7fb;padding:80px 8% 100px;}
+.testi-body h2{text-align:center;font-size:38px;color:#015a9b;font-weight:800;margin-bottom:12px;letter-spacing:1px;}
+.testi-subtitle{text-align:center;color:#888;font-size:16px;margin-bottom:60px;}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:30px;max-width:1200px;margin:0 auto;}
+.testi-card{background:white;border-radius:20px;padding:36px 30px 30px;box-shadow:0 8px 30px rgba(0,0,0,0.08);position:relative;transition:transform 0.3s,box-shadow 0.3s;border-bottom:4px solid #015a9b;}
+.testi-card:hover{transform:translateY(-8px);box-shadow:0 20px 45px rgba(0,0,0,0.12);}
+.testi-quote-icon{font-size:52px;color:#FFD700;line-height:1;margin-bottom:16px;font-family:Georgia,serif;}
+.testi-card-text{font-size:16px;line-height:1.85;color:#555;margin-bottom:28px;font-style:italic;text-align:left;}
+.testi-card-footer{display:flex;align-items:center;gap:16px;border-top:1px solid #f0f0f0;padding-top:22px;}
+.testi-avatar-initials{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#015a9b,#0172c5);color:white;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;border:3px solid #015a9b;}
+.testi-meta strong{display:block;font-size:16px;font-weight:700;color:#015a9b;margin-bottom:3px;}
+.testi-meta span{font-size:13px;color:#999;letter-spacing:0.5px;}
+.testi-stars{margin-bottom:14px;font-size:18px;letter-spacing:2px;color:#FFD700;}
+.testi-add-wrapper{text-align:center;margin-top:60px;}
+.testi-add-btn{padding:15px 40px;background:#015a9b;color:white;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:0.3s;letter-spacing:0.5px;}
+.testi-add-btn:hover{background:#FFD700;color:#1a1a1a;transform:translateY(-2px);}
+.testi-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;align-items:center;justify-content:center;}
+.testi-modal-overlay.open{display:flex;}
+.testi-modal{background:white;border-radius:20px;padding:50px 45px;max-width:560px;width:90%;position:relative;box-shadow:0 25px 60px rgba(0,0,0,0.2);animation:modalIn 0.3s ease;}
+@keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(0.96);}to{opacity:1;transform:translateY(0) scale(1);}}
+.testi-modal h3{font-size:26px;font-weight:800;color:#015a9b;margin-bottom:6px;}
+.testi-modal p.modal-sub{font-size:14px;color:#999;margin-bottom:30px;}
+.testi-modal-close{position:absolute;top:20px;right:22px;background:none;border:none;font-size:26px;color:#aaa;cursor:pointer;line-height:1;transition:0.2s;}
+.testi-modal-close:hover{color:#333;}
+.testi-modal .cf-group input,.testi-modal .cf-group textarea{border:1.5px solid #e8e8e8;border-radius:12px;padding:13px 16px;width:100%;font-size:15px;outline:none;background:#fafafa;transition:0.3s;font-family:inherit;resize:vertical;appearance:none;-webkit-appearance:none;color:#333;}
+.testi-modal .cf-group input:focus,.testi-modal .cf-group textarea:focus{border-color:#015a9b;box-shadow:0 0 0 4px rgba(1,90,155,0.08);}
+.testi-modal .cf-group input::placeholder,.testi-modal .cf-group textarea::placeholder{color:#bbb;}
+.testi-modal .cf-group label{display:block;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#555;margin-bottom:7px;}
+.testi-modal .cf-group{margin-bottom:20px;}
+.star-rating-input{display:flex;gap:8px;font-size:30px;cursor:pointer;margin-bottom:5px;}
+.star-rating-input span{color:#ddd;transition:0.2s;user-select:none;}
+.star-rating-input span.active{color:#FFD700;}
+.modal-submit-btn{width:100%;padding:15px;background:#FFD700;color:#1a1a1a;border:none;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;transition:0.3s;text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
+.modal-submit-btn:hover{background:#015a9b;color:white;}
+
+/* ===== FEATURE CARDS (instructors) ===== */
+.feature-container{width:100%;display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-top:70px;}
+.feature-card{width:320px;height:420px;border:5px solid #015a9b;border-radius:18px;overflow:hidden;position:relative;cursor:pointer;background:white;box-shadow:0 10px 25px rgba(0,0,0,0.15);}
+.feature-card img{width:100%;height:100%;object-fit:cover;transition:0.6s;}
+.feature-title{position:absolute;bottom:0;width:100%;background:#015a9b;color:white;padding:18px;font-size:22px;font-weight:bold;text-align:center;transition:0.5s;}
+.feature-description{position:absolute;left:0;bottom:-100%;width:100%;height:100%;background:rgba(1,90,155,0.95);color:white;padding:35px 25px;display:flex;justify-content:center;align-items:center;text-align:center;font-size:18px;line-height:1.8;transition:0.6s;}
+.feature-card:hover img{transform:translateY(-40px);}
+.feature-card:hover .feature-title{opacity:0;}
+.feature-card:hover .feature-description{bottom:0;}
+
+/* ===== FOOTER ===== */
+.footer-section{background:url('ibaba.png') center/cover no-repeat;position:relative;}
+.footer-overlay{background:rgba(0,0,0,0.60);padding:70px 80px 35px;}
+.footer-content{display:flex;justify-content:space-between;gap:60px;flex-wrap:wrap;}
+.footer-column{color:white;max-width:320px;}
+.footer-column h3{margin-bottom:18px;font-size:22px;color:#FFD700;}
+.footer-column p{line-height:1.9;color:#e2e2e2;font-size:16px;}
+.footer-column a{display:block;color:#e2e2e2;text-decoration:none;margin-bottom:12px;transition:0.3s;}
+.footer-column a:hover{color:#FFD700;padding-left:5px;}
+.footer-bottom{margin-top:45px;padding-top:25px;border-top:1px solid rgba(255,255,255,0.2);text-align:center;}
+.footer-bottom p{color:#d9d9d9;font-size:15px;letter-spacing:1px;}
+
+/* ===== LIGHTBOX ===== */
+.fac-card{cursor:pointer;}
+.lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:10000;align-items:center;justify-content:center;flex-direction:column;padding:30px;}
+.lightbox-overlay.open{display:flex;animation:lbFadeIn 0.25s ease;}
+@keyframes lbFadeIn{from{opacity:0;}to{opacity:1;}}
+.lightbox-img-wrap{position:relative;max-width:90vw;max-height:78vh;display:flex;align-items:center;justify-content:center;}
+.lightbox-img-wrap img{max-width:90vw;max-height:75vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,0.5);object-fit:contain;animation:lbZoomIn 0.3s ease;}
+@keyframes lbZoomIn{from{transform:scale(0.88);opacity:0;}to{transform:scale(1);opacity:1;}}
+.lightbox-info{text-align:center;color:white;margin-top:18px;max-width:600px;}
+.lightbox-info h3{font-size:22px;font-weight:700;margin-bottom:6px;}
+.lightbox-info p{font-size:15px;color:rgba(255,255,255,0.75);line-height:1.6;}
+.lightbox-close{position:fixed;top:20px;right:28px;background:none;border:none;color:white;font-size:36px;cursor:pointer;line-height:1;z-index:10001;transition:0.2s;opacity:0.8;}
+.lightbox-close:hover{opacity:1;transform:scale(1.15);}
+.lightbox-tag{display:inline-block;background:#FFD700;color:#1a1a1a;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;}
+
+/* ===== RESPONSIVE ===== */
 @media(max-width:900px){
-
-  .nav-main{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .welcome-container{
-    flex-direction:column;
-  }
-
-  .news-slider{
-    flex-direction:column;
-  }
-
-  .news-card{
-    width:100%;
-  }
-
-  .hero h1{
-    font-size:38px;
-  }
-
-  .welcome-text h2,
-  .news-title,
-  .section-page h1{
-    font-size:35px;
-  }
-
-  .footer-content{
-    flex-direction:column;
-  }
-
+  .nav-main{flex-direction:column;align-items:center;}
+  .welcome-container{flex-direction:column;}
+  .news-slider{flex-direction:column;}
+  .news-card{width:100%;}
+  .hero h1{font-size:38px;}
+  .welcome-text h2,.news-title,.section-page h1{font-size:35px;}
+  .footer-content{flex-direction:column;}
+  .ait-about-body{flex-direction:column;}
+  .ait-tracks-grid{grid-template-columns:1fr;}
+  .contact-body-new .contact-inner{grid-template-columns:1fr;}
+  .cf-grid{grid-template-columns:1fr;}
+  .cf-grid .cf-group.full{grid-column:1;}
+  .floor-nav{flex-wrap:wrap;}
+  .floor-nav-btn{padding:12px 18px;font-size:13px;}
 }
-
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-
+<!-- ===== HEADER ===== -->
 <header>
-
   <div class="nav-main">
 
     <div class="nav-left-wrapper">
-
       <a href="#" class="top-label">Students</a>
-
       <div class="nav-left">
         <a href="#" onclick="showSection('home')">Home</a>
-        <a href="#" onclick="showSection('facilities')">Facilities</a>
+
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle" onclick="event.preventDefault(); showSection('facilities');">
+            Facilities
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="dropdown-content">
+            <a href="#" onclick="event.preventDefault(); showSection('facilities'); goToFacility('ground-floor');">
+              <span class="floor-icon">🏢</span> Ground Floor
+            </a>
+            <a href="#" onclick="event.preventDefault(); showSection('facilities'); goToFacility('mezzanine-floor');">
+              <span class="floor-icon">🪜</span> Mezzanine
+            </a>
+            <a href="#" onclick="event.preventDefault(); showSection('facilities'); goToFacility('third-floor');">
+              <span class="floor-icon">🏫</span> 3rd Floor
+            </a>
+            <a href="#" onclick="event.preventDefault(); showSection('facilities'); goToFacility('library-floor');">
+              <span class="floor-icon">📚</span> Library / Function Hall
+            </a>
+            <a href="#" onclick="event.preventDefault(); showSection('facilities'); goToFacility('roof-deck');">
+              <span class="floor-icon">🌤️</span> Roof Deck
+            </a>
+          </div>
+        </div>
+
         <a href="#" onclick="showSection('instructors')">Instructors</a>
       </div>
-
     </div>
 
     <div class="logo">
-      <img src="STILOGO.png" alt="Logo">
+      <img src="STILOGO.png" alt="STI Logo">
     </div>
 
     <div class="nav-right-wrapper">
-
       <a href="#" class="top-label">Faculty</a>
-
       <div class="nav-right">
         <a href="#" onclick="showSection('aboutIT')">About IT</a>
         <a href="#" onclick="showSection('contact')">Contact Us</a>
         <a href="#" onclick="showSection('testimonies')">Testimonials</a>
       </div>
-
     </div>
 
   </div>
-
 </header>
 
-<!-- HOME PAGE -->
-
+<!-- ===== HOME ===== -->
 <section id="home" class="page-section active-section">
 
-  <!-- HERO -->
-
   <section class="hero">
-
     <div class="hero-content">
-
-      <h1>
-        Be Future-Ready.
-        <span class="sti">Be STI.</span>
-      </h1>
-
-      <p>
-        An institution committed to provide knowledge through
-        the development and delivery of superior learning systems.
-      </p>
-
+      <h1>Be Future-Ready. <span class="sti">Be STI.</span></h1>
+      <p>An institution committed to provide knowledge through the development and delivery of superior learning systems.</p>
       <div class="buttons">
-        <button class="btn primary">Explore Programs</button>
-        <button class="btn" onclick="showSection('contact')">
-          Contact Us
-        </button>
+        <button class="btn primary">Explore IT Program</button>
+        <button class="btn" onclick="showSection('contact')">Contact Us</button>
       </div>
-
     </div>
-
   </section>
-
-  <!-- WELCOME -->
 
   <section class="welcome-section">
-
     <div class="welcome-container">
-
       <div class="welcome-text">
-
         <h2>Welcome to STI College Calamba</h2>
-
-        <p>
-          At STI College Calamba, students are at the heart of everything we do.
-          We nurture passionate learners who are driven to explore, grow,
-          and succeed in an ever-changing world.
-        </p>
-
-        <button class="about-btn" onclick="showSection('aboutIT')">
-          ABOUT IT
-        </button>
-
+        <p>At STI College Calamba, students are at the heart of everything we do. We nurture passionate learners who are driven to explore, grow, and succeed in an ever-changing world.</p>
+        <button class="about-btn" onclick="showSection('aboutIT')">ABOUT IT</button>
       </div>
-
       <div class="welcome-image">
-
-        <button class="nav-btn prev" onclick="changeImage(-1)">
-          &#10094;
-        </button>
-
+        <button class="nav-btn prev" onclick="changeImage(-1)">&#10094;</button>
         <img id="welcomeImg" src="grouppic.png" alt="Group Photo">
-
-        <button class="nav-btn next" onclick="changeImage(1)">
-          &#10095;
-        </button>
-
+        <button class="nav-btn next" onclick="changeImage(1)">&#10095;</button>
       </div>
-
     </div>
-
   </section>
-
-  <!-- NEWS -->
 
   <section class="news-section">
-
     <h2 class="news-title">College News</h2>
-
     <div class="news-slider" id="newsSlider"></div>
-
   </section>
 
 </section>
 
-<!-- FACILITIES -->
-
+<!-- ===== FACILITIES ===== -->
 <section id="facilities" class="page-section">
 
-  <div class="section-page">
-
-    <h1>Facilities</h1>
-
-    <p>
-      Explore STI College Calamba’s modern learning
-      environments and student-friendly facilities.
-    </p>
-
-    <!-- FEATURE CARDS -->
-
-    <div class="feature-container">
-
-      <!-- LOBBY -->
-
-      <div class="feature-card">
-
-        <img src="lobby.jpg" alt="Lobby">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Lobby
-          </div>
-
-          <div class="feature-text">
-
-            A welcoming reception area where students,
-            faculty, and visitors are greeted at the
-            heart of the campus.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Modern reception area designed for comfort,
-          inquiries, student assistance, and campus interaction.
-
-        </div>
-
-      </div>
-
-      <!-- COURT -->
-
-      <div class="feature-card">
-
-        <img src="court.jpg" alt="Court">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Court
-          </div>
-
-          <div class="feature-text">
-
-            A covered multi-purpose sports court ideal
-            for basketball, volleyball, and campus events.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Spacious and well-ventilated area for
-          sports activities, school programs,
-          and student gatherings.
-
-        </div>
-
-      </div>
-
-      <!-- MEZZANINE -->
-
-      <div class="feature-card">
-
-        <img src="mezzanine.jpg" alt="Mezzanine">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Mezzanine
-          </div>
-
-          <div class="feature-text">
-
-            Open student space perfect for dining,
-            studying, relaxing, and collaboration.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Comfortable open area with tables and seating
-          designed for student interaction and productivity.
-
-        </div>
-
-      </div>
-
-      <!-- COMPUTER LAB -->
-
-      <div class="feature-card">
-
-        <img src="comlab.jpg" alt="Computer Laboratory">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Computer Laboratory
-          </div>
-
-          <div class="feature-text">
-
-            Equipped with modern computers and
-            high-speed internet for IT students.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Advanced laboratory environment supporting
-          programming, networking, multimedia,
-          and software development activities.
-
-        </div>
-
-      </div>
-
-      <!-- LIBRARY -->
-
-      <div class="feature-card">
-
-        <img src="library.jpg" alt="Library">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Library
-          </div>
-
-          <div class="feature-text">
-
-            Quiet academic space with books,
-            journals, and research references.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Resource center designed to support
-          reading, independent learning,
-          and academic research.
-
-        </div>
-
-      </div>
-<!-- LOBBY -->
-
-      <div class="feature-card">
-
-        <img src="functionhall.jpg" alt="Lobby">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Function Hall
-          </div>
-
-          <div class="feature-text">
-
-            A welcoming reception area where students,
-            faculty, and visitors are greeted at the
-            heart of the campus.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Modern reception area designed for comfort,
-          inquiries, student assistance, and campus interaction.
-
-        </div>
-
-      </div>
-<!-- LOBBY -->
-
-      <div class="feature-card">
-
-        <img src="cashier.jpg" alt="Lobby">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-            Cashier/Registrar
-          </div>
-
-          <div class="feature-text">
-
-            A welcoming reception area where students,
-            faculty, and visitors are greeted at the
-            heart of the campus.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Modern reception area designed for comfort,
-          inquiries, student assistance, and campus interaction.
-
-        </div>
-
-    </div>
-<!-- LOBBY -->
-
-      <div class="feature-card">
-
-        <img src="comlab 103.jpg" alt="Lobby">
-
-        <div class="feature-info">
-
-          <div class="feature-title">
-		ComLab103
-          </div>
-
-          <div class="feature-text">
-
-            A welcoming reception area where students,
-            faculty, and visitors are greeted at the
-            heart of the campus.
-
-          </div>
-
-        </div>
-
-        <div class="feature-description">
-
-          Modern reception area designed for comfort,
-          inquiries, student assistance, and campus interaction.
-
-        </div>
-
+  <div class="section-page facilities-header">
+    <h1>FACILITIES</h1>
+    <p>Explore STI College Calamba's modern learning environments and student-friendly facilities.</p>
   </div>
 
+  <!-- Floor Tab Navigation -->
+  <div class="floor-nav">
+    <button class="floor-nav-btn active-tab" onclick="goToFacility('ground-floor',this)">Ground Floor</button>
+    <button class="floor-nav-btn" onclick="goToFacility('mezzanine-floor',this)">Mezzanine</button>
+    <button class="floor-nav-btn" onclick="goToFacility('third-floor',this)">3rd Floor</button>
+    <button class="floor-nav-btn" onclick="goToFacility('library-floor',this)">Library / Function Hall</button>
+    <button class="floor-nav-btn" onclick="goToFacility('roof-deck',this)">Roof Deck</button>
+  </div>
+
+  <!-- GROUND FLOOR -->
+  <div id="ground-floor" class="floor-section active-floor">
+    <div class="facility-grid-header">
+      <h2>Ground Floor</h2>
+      <p>Main entrance and administrative areas of the campus.</p>
+    </div>
+    <div class="facility-cards-grid">
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="lobby.jpg" alt="Lobby" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Reception</span>
+          <h3>Lobby</h3>
+          <p>A welcoming reception area where students, faculty, and visitors are greeted at the heart of the campus. Designed for comfort, inquiries, and student assistance.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="court.jpg" alt="Covered Court" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Sports</span>
+          <h3>Covered Court</h3>
+          <p>A covered multi-purpose sports court ideal for basketball, volleyball, and campus events. Spacious and well-ventilated for sports and student gatherings.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="fdesk.jpg" alt="Front Desk" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Admin</span>
+          <h3>Front Desk</h3>
+          <p>Your first point of contact for all campus inquiries. Our front desk staff are ready to assist students, parents, and visitors with any concern.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="proware.jpg" alt="Proware" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Tech</span>
+          <h3>Proware</h3>
+          <p>A dedicated technology hub supporting student learning through access to software, hardware tools, and technical resources for academic projects.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="guidance.jpg" alt="Guidance Office" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Support</span>
+          <h3>Guidance Office</h3>
+          <p>Providing academic, personal, and career counseling services. A safe space for students seeking guidance, support, and professional development assistance.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="cashier.jpg" alt="Cashier" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Finance</span>
+          <h3>Cashier / Registrar</h3>
+          <p>Handles all financial transactions, enrollment records, and official documents. Conveniently located for easy student access to administrative services.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="guidance.jpg" alt="Discipline Office" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Admin</span>
+          <h3>Discipline Office</h3>
+          <p>Maintains the standards of student conduct and campus order. Promotes a safe, respectful, and disciplined learning environment for all students.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="Room103.jpg" alt="Room 103" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Classroom</span>
+          <h3>Room 103</h3>
+          <p>A well-equipped classroom designed to provide students with a comfortable and focused learning environment with modern instructional technology.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="clinic.jpg" alt="Clinic" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Health</span>
+          <h3>Clinic</h3>
+          <p>The campus clinic provides first aid, health consultations, and medical assistance to students and staff. Attended by a licensed nurse to ensure the well-being of the campus community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEZZANINE -->
+  <div id="mezzanine-floor" class="floor-section">
+    <div class="facility-grid-header">
+      <h2>Mezzanine</h2>
+      <p>Intermediate level connecting the ground floor to upper floors.</p>
+    </div>
+    <div class="facility-cards-grid">
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="mezzanine.jpg" alt="Mezzanine" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Common Area</span>
+          <h3>Mezzanine</h3>
+          <p>An open intermediate level that serves as a transitional and communal space for students between floors, offering seating and informal study areas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3RD FLOOR -->
+  <div id="third-floor" class="floor-section">
+    <div class="facility-grid-header">
+      <h2>3rd Floor</h2>
+      <p>Academic classrooms equipped for modern instruction.</p>
+    </div>
+    <div class="facility-cards-grid">
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="309.jpg" alt="Room 309" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Classroom</span>
+          <h3>Room 309</h3>
+          <p>Modern classroom designed to provide students with a comfortable learning environment, equipped with presentation tools and instructional technology.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="310.jpg" alt="Room 310" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Classroom</span>
+          <h3>Room 310</h3>
+          <p>A spacious and well-lit classroom built for collaborative and individual learning, supporting both lecture-style and interactive teaching methods.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="rm311(1).jpg" alt="Room 311" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Classroom</span>
+          <h3>Room 311</h3>
+          <p>Fully equipped for effective teaching, Room 311 offers a conducive environment for focused study and hands-on academic activities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIBRARY / FUNCTION HALL -->
+  <div id="library-floor" class="floor-section">
+    <div class="facility-grid-header">
+      <h2>Library / Function Hall</h2>
+      <p>Resources for research, reading, and large campus events.</p>
+    </div>
+    <div class="facility-cards-grid">
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="library.jpg" alt="Library" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Learning</span>
+          <h3>Library</h3>
+          <p>A quiet and resource-rich environment supporting reading, research, and independent learning. Provides access to books, references, computers, and study areas.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="functionhall.jpg" alt="Function Hall" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Events</span>
+          <h3>Function Hall</h3>
+          <p>A versatile venue for seminars, workshops, assemblies, and events. Designed to accommodate large gatherings while providing a professional atmosphere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROOF DECK -->
+  <div id="roof-deck" class="floor-section">
+    <div class="facility-grid-header">
+      <h2>Roof Deck</h2>
+      <p>Open-air spaces for relaxation, dining, and outdoor activities.</p>
+    </div>
+    <div class="facility-cards-grid">
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="roofdeck.jpg" alt="Roof Deck" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Outdoor</span>
+          <h3>Roof Deck</h3>
+          <p>An open-air space offering a relaxing environment for students and campus activities. Frequently used for events, gatherings, and recreational activities.</p>
+        </div>
+      </div>
+      <div class="fac-card">
+        <div class="fac-card-accent"></div>
+        <img src="canteen.jpg" alt="Canteen" class="fac-card-img">
+        <div class="fac-card-body">
+          <span class="fac-card-tag">Dining</span>
+          <h3>Canteen / Cafeteria</h3>
+          <p>A lively dining area serving meals and snacks throughout the school day. A favorite spot for students to eat, relax, and catch up between classes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </section>
 
-
- 
-
-<!-- INSTRUCTORS -->
-
+<!-- ===== INSTRUCTORS ===== -->
 <section id="instructors" class="page-section">
 
+  <div class="section-page instructors-header">
+    <h1>INSTRUCTORS</h1>
+    <p>Meet our highly qualified instructors dedicated to delivering quality education, mentorship, and industry-relevant learning experiences.</p>
+  </div>
+
   <div class="section-page">
-
-    <h1>Instructors</h1>
-
-    <p>
-      Meet our highly qualified instructors dedicated
-      to delivering quality education and mentorship.
-    </p>
-
     <div class="feature-container">
-
-      <!-- PANEL 1 -->
-
       <div class="feature-card">
-
         <img src="teacher1.jpeg" alt="Instructor">
-
-        <div class="feature-title">
-          Daludado, John Philip
-        </div>
-
-        <div class="feature-description">
-          Position: IT Instructor
-Specialisation: Web Development
-        </div>
-
+        <div class="feature-title">Daludado, John Philip</div>
+        <div class="feature-description">Position: IT Instructor<br>Specialization: Web Development</div>
       </div>
-
-      <!-- PANEL 2 -->
-
       <div class="feature-card">
-
         <img src="teacher2.jpeg" alt="Instructor">
-
-        <div class="feature-title">
-          Palmones, Euencis
-        </div>
-
-        <div class="feature-description">
-          Position: IT Instructor
-Specialisation: Database Management
-        </div>
-
+        <div class="feature-title">Palmones, Euencis</div>
+        <div class="feature-description">Position: IT Instructor<br>Specialization: Database Management</div>
       </div>
-
-      <!-- PANEL 3 -->
-
       <div class="feature-card">
-
         <img src="teacher3.jpg" alt="Instructor">
-
-        <div class="feature-title">
-          Belarmino, Dexter
-        </div>
-
-        <div class="feature-description">
-          Skilled mentors helping students master
-          programming and software development.
-        </div>
-
+        <div class="feature-title">Belarmino, Dexter</div>
+        <div class="feature-description">Skilled mentor helping students master programming and software development.</div>
       </div>
-
-      <!-- PANEL 4 -->
-
       <div class="feature-card">
-
         <img src="teacher4.jpg" alt="Instructor">
-
-        <div class="feature-title">
-          Gonzalez, Jose Carlos
-        </div>
-
-        <div class="feature-description">
-          Academic Head
-
-        </div>
-
+        <div class="feature-title">Gonzalez, Jose Carlos</div>
+        <div class="feature-description">Academic Head</div>
       </div>
-
-      <!-- PANEL 5 -->
-
       <div class="feature-card">
-
         <img src="teacher5.jpeg" alt="Instructor">
-
-        <div class="feature-title">
-          Sadicon, Arvin
-        </div>
-
-        <div class="feature-description">
-          Position: IT Head, IT Instructor
-Specialisation: Programming, Documentation, System.
-
-        </div>
-
+        <div class="feature-title">Sadicon, Arvin</div>
+        <div class="feature-description">Position: IT Head, IT Instructor<br>Specialization: Programming, Documentation, Systems</div>
       </div>
-
-      <!-- PANEL 6 -->
-
       <div class="feature-card">
-
         <img src="teacher6.png" alt="Instructor">
-
-        <div class="feature-title">
-          Coral, Joie Mar
-        </div>
-
-        <div class="feature-description">
-          Position: IT Instructor
-Specialisation: Web and Mobile App Development
-        </div>
-      <!-- PANEL 7 -->
-
-      <div class="feature-card">
-
-        <img src="teacher7.png" alt="Instructor">
-
-        <div class="feature-title">
-          Multimedia
-        </div>
-
-        <div class="feature-description">
-          Creative professionals teaching multimedia,
-          graphics, animation, and UI/UX design.
-        </div>
-
-
+        <div class="feature-title">Coral, Joie Mar</div>
+        <div class="feature-description">Position: IT Instructor<br>Specialization: Web and Mobile App Development</div>
       </div>
-
+      <div class="feature-card">
+        <img src="teacher7.png" alt="Instructor">
+        <div class="feature-title">Villanueva, Danyca Alliah</div>
+        <div class="feature-description">Position: IT Instructor<br>Specialization: Web Development</div>
+      </div>
+      <div class="feature-card">
+        <img src="teacher8.jpeg" alt="Instructor">
+        <div class="feature-title">Brofar, Joyce Ann</div>
+        <div class="feature-description">Position: IT Instructor<br>Specialization: Systems Development, Academic Research, and Data &amp; Information Management</div>
+      </div>
     </div>
-<!-- PANEL 7 -->
-
-<div class="feature-card">
-
-  <img src="teacher7.png" alt="Instructor">
-
-  <div class="feature-title">
-    Villanueva, Danyca Alliah
-  </div>
-
-  <div class="feature-description">
-    Position: IT Instructor
-Specialisation: Web Development
-
-  </div>
-
-</div>
-<!-- PANEL 7 -->
-
-<div class="feature-card">
-
-  <img src="teacher8.jpeg" alt="Instructor">
-
-  <div class="feature-title">
-    Brofar, Joyce Ann
-  </div>
-
-  <div class="feature-description">
-    Position: IT Instructor
-Specialisation: Systems Development, Academic Research, and Data and Information Management
-
-  </div>
-
   </div>
 
 </section>
-<!-- ABOUT IT -->
 
+<!-- ===== ABOUT IT ===== -->
 <section id="aboutIT" class="page-section">
 
-  <div class="section-page">
+  <div class="aboutit-header">
+    <div style="display:inline-block;background:#FFD700;color:#1a1a1a;font-size:13px;font-weight:700;letter-spacing:2px;padding:6px 18px;border-radius:30px;margin-bottom:22px;text-transform:uppercase;">B.S. Information Technology</div>
+    <h1>ABOUT I.T.</h1>
+    <p>Discover a future-focused program designed to equip you with real-world technical skills across networking, development, and intelligent automation.</p>
+  </div>
 
-    <h1>About IT</h1>
+  <div class="ait-about-body">
+    <div class="ait-about-text">
+      <h2>What is BS Information Technology?</h2>
+      <p>The Bachelor of Science in Information Technology is a four-year program that trains students to become highly skilled in the practical and technical aspects of computer systems, networking, troubleshooting, and hardware repair.</p>
+      <p>At STI College Calamba, the BSIT program is delivered through three specialized tracks — each designed to align with the demands of today's technology industry and equip graduates with career-ready skills from day one.</p>
+    </div>
+    <div class="ait-about-img-wrap">
+      <img src="grouppic.png" alt="IT Students at STI Calamba">
+    </div>
+  </div>
 
-    <p>
-      The Bachelor of Science in Information Technology (BS IT)
-      is a four-year program that trains students to become
-      highly skilled in the practical and technical aspects of
-      computer systems, networking, troubleshooting,
-      and hardware repair.
-    </p>
+  <div class="ait-tracks-section">
+    <h2>Specialization Tracks</h2>
+    <p>Choose the path that matches your passion and career goals.</p>
+    <div class="ait-tracks-grid">
+      <div class="ait-track-card">
+        <div class="ait-track-icon-bar">🛡️</div>
+        <div class="ait-track-body">
+          <span class="ait-track-tag">Track 1</span>
+          <h3>Network &amp; Security</h3>
+          <p>From basic to advanced networking and cybersecurity. Learn to manage, secure, audit, and protect computer networks using industry-standard policies and procedures.</p>
+          <div class="ait-skill-pills">
+            <span class="ait-skill-pill">Network Management</span>
+            <span class="ait-skill-pill">Cybersecurity</span>
+            <span class="ait-skill-pill">Auditing</span>
+            <span class="ait-skill-pill">Firewalls</span>
+          </div>
+        </div>
+      </div>
+      <div class="ait-track-card">
+        <div class="ait-track-icon-bar">💻</div>
+        <div class="ait-track-body">
+          <span class="ait-track-tag">Track 2</span>
+          <h3>Web &amp; Mobile App Dev</h3>
+          <p>Enhance your programming knowledge through modern web and mobile technologies, frameworks, software tools, and application development best practices.</p>
+          <div class="ait-skill-pills">
+            <span class="ait-skill-pill">Web Development</span>
+            <span class="ait-skill-pill">Mobile Apps</span>
+            <span class="ait-skill-pill">Frameworks</span>
+            <span class="ait-skill-pill">UI/UX</span>
+          </div>
+        </div>
+      </div>
+      <div class="ait-track-card">
+        <div class="ait-track-icon-bar">⚙️</div>
+        <div class="ait-track-body">
+          <span class="ait-track-tag">Track 3</span>
+          <h3>IT Automation</h3>
+          <p>Integrate systems and software to become self-operating using sensors, actuators, scripting, automation tools, and intelligent IT processes.</p>
+          <div class="ait-skill-pills">
+            <span class="ait-skill-pill">Scripting</span>
+            <span class="ait-skill-pill">Sensors &amp; Actuators</span>
+            <span class="ait-skill-pill">AI Systems</span>
+            <span class="ait-skill-pill">DevOps</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <br><br>
-
-    <p>
-      The program offers three specialization tracks:
-      <br><br>
-
-      • Network and Security Track
-      <br>
-      • IT Automation Track
-      <br>
-      • Web and Mobile Application Development Track
-    </p>
-
-    <br><br>
-
-    <p>
-      The BSIT Web and Mobile Application Development Track
-      supplements the programming courses students currently take.
-      Additional programming languages, frameworks, tools,
-      and software development best practices are introduced
-      to strengthen real-world development skills.
-    </p>
-
-    <br><br>
-
-    <p>
-      <strong>Network and Security Track</strong> –
-      focuses on basic to advanced networking and cybersecurity
-      implementation. Students learn how to manage,
-      secure, audit, and protect computer networks
-      using industry-standard policies and procedures.
-    </p>
-
-    <br><br>
-
-    <p>
-      <strong>Web and Mobile App Development Track</strong> –
-      enhances students’ programming knowledge through
-      modern web and mobile technologies, frameworks,
-      software tools, and application development practices.
-    </p>
-
-    <br><br>
-
-    <p>
-      <strong>IT Automation Track</strong> –
-      focuses on integrating systems and software
-      to become self-operating through the use of
-      sensors, actuators, scripting, automation tools,
-      and intelligent IT processes.
-    </p>
-
+  <div class="ait-cta">
+    <h2>Ready to start your IT journey?</h2>
+    <p>Join STI College Calamba and become part of a community of future-ready technology professionals.</p>
+    <button class="ait-cta-btn" onclick="showSection('contact')">Enroll Now</button>
+    <button class="ait-cta-btn outline" onclick="showSection('instructors')">Meet the Faculty</button>
   </div>
 
 </section>
 
-<!-- CONTACT -->
-
+<!-- ===== CONTACT ===== -->
 <section id="contact" class="page-section">
 
-  <div class="section-page">
-<!-- CENTER IMAGE -->
+  <div class="section-page contact-header" style="min-height:50vh;padding:120px 50px 60px;">
+    <h1>CONTACT US</h1>
+    <p>Have questions, concerns, or inquiries? Reach out to us and our team will be happy to assist you.</p>
+  </div>
 
-<img
-  src="vita.png"
-  alt="Vita"
-  class="contact-image"
->
-    <h1>Contact Us</h1>
-
-
-
-<p>Email: info@sti.edu</p>
-    <p>Phone: 0998 964 0644</p>
-
-    <p>
-      Purok 1 National Highway,
-      Barangay Uno, Calamba
-    </p>
-
+  <div class="contact-body-new">
+    <div class="contact-inner">
+      <div class="contact-info-panel">
+        <div class="contact-info-top">
+          <h2>STI CALAMBA</h2>
+          <p class="panel-tagline">We're here to help. Reach out through any of the channels below.</p>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📧</div>
+            <div class="contact-info-text"><strong>Email</strong><span>info@sti.edu</span></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div class="contact-info-text"><strong>Phone</strong><span>0998 964 0644</span></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div class="contact-info-text"><strong>Address</strong><span>Purok 1 National Highway,<br>Barangay Uno, Calamba</span></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div class="contact-info-text"><strong>Office Hours</strong><span>Mon – Fri: 8:00 AM – 5:00 PM</span></div>
+          </div>
+        </div>
+        <div class="contact-info-bottom">
+          <hr class="contact-divider">
+          <div class="contact-social-row">
+            <a class="contact-social-btn" href="#" title="Facebook">f</a>
+            <a class="contact-social-btn" href="#" title="Messenger">✉</a>
+            <a class="contact-social-btn" href="#" title="Instagram">📷</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-panel">
+        <h2>Get In Touch</h2>
+        <p class="form-tagline">Fill out the form and we'll respond within 24 hours.</p>
+        <div class="cf-grid">
+          <div class="cf-group">
+            <label><span class="lbl-icon">👤</span> Full Name</label>
+            <input type="text" id="cf-fname" placeholder="e.g. Juan Dela Cruz">
+            <div class="cf-bar"></div>
+          </div>
+          <div class="cf-group">
+            <label><span class="lbl-icon">📞</span> Contact Number</label>
+            <input type="tel" id="cf-phone" placeholder="09XX-XXX-XXXX">
+            <div class="cf-bar"></div>
+          </div>
+          <div class="cf-group full">
+            <label><span class="lbl-icon">✉️</span> Email Address</label>
+            <input type="email" id="cf-email" placeholder="yourname@email.com">
+            <div class="cf-bar"></div>
+          </div>
+          <div class="cf-group full">
+            <label><span class="lbl-icon">📋</span> Nature of Concern</label>
+            <select id="cf-inquiry">
+              <option value="" disabled selected>— Choose a concern —</option>
+              <option value="admissions">Enrollment / Admissions</option>
+              <option value="general">General Inquiry</option>
+              <option value="academic">Academic Concern</option>
+              <option value="financial">Tuition / Payments</option>
+              <option value="scholarship">Scholarships</option>
+              <option value="feedback">Feedback / Suggestion</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="cf-group full">
+            <label><span class="lbl-icon">💬</span> Message</label>
+            <textarea id="cf-message" rows="5" placeholder="Write your message or concern here..."></textarea>
+            <div class="cf-bar"></div>
+          </div>
+        </div>
+        <button class="cf-submit-btn" onclick="handleNewContactSubmit()">&#9993;&nbsp; Send Message</button>
+        <div class="cf-success" id="cfSuccess">✅ Your message has been sent! We'll get back to you within 24 hours.</div>
+      </div>
+    </div>
   </div>
 
 </section>
 
-<!-- TESTIMONIALS -->
-
+<!-- ===== TESTIMONIALS ===== -->
 <section id="testimonies" class="page-section">
 
-  <div class="section-page">
+  <div class="section-page testimonial-header" style="min-height:50vh;padding:120px 50px 60px;">
+    <h1>TESTIMONIALS</h1>
+    <p>Hear inspiring stories and experiences from students who have grown and succeeded through STI College Calamba.</p>
+  </div>
 
-    <h1>Testimonials</h1>
-
-    <p>
-      “STI helped me become confident and industry-ready.”
-    </p>
-
-    <br>
-
-    <p>
-      “The campus environment is welcoming and inspiring.”
-    </p>
-
+  <div class="testi-body">
+    <h2>What Our Students Say</h2>
+    <p class="testi-subtitle">Real stories from the STI Calamba community</p>
+    <div class="testi-grid" id="testiGrid">
+      <div class="testi-card">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-card-text">STI helped me become confident and industry-ready. The instructors are hands-on and always willing to guide you through every challenge. I landed my job even before graduation!</p>
+        <div class="testi-card-footer">
+          <div class="testi-avatar-initials">MR</div>
+          <div class="testi-meta"><strong>Maria Reyes</strong><span>BS Information Technology, 2024</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-card-text">The campus environment is welcoming and inspiring. The facilities are modern and the teachers really care about student growth. STI prepared me for the real world of tech.</p>
+        <div class="testi-card-footer">
+          <div class="testi-avatar-initials">JD</div>
+          <div class="testi-meta"><strong>Jose Dela Cruz</strong><span>BS Information Technology, 2023</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-card-text">Choosing STI Calamba was one of the best decisions I made. The Web &amp; Mobile Development track gave me real skills that I use every day in my career as a software developer.</p>
+        <div class="testi-card-footer">
+          <div class="testi-avatar-initials">AL</div>
+          <div class="testi-meta"><strong>Anna Lim</strong><span>BS Information Technology, 2025</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-card-text">The Network and Security track was challenging but rewarding. Our instructors made complex concepts easy to understand and pushed us to excel beyond expectations.</p>
+        <div class="testi-card-footer">
+          <div class="testi-avatar-initials">KS</div>
+          <div class="testi-meta"><strong>Kevin Santos</strong><span>BS Information Technology, 2024</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-card-text">I'm proud to be a STIan. The values instilled here — discipline, excellence, and teamwork — are things I carry with me every day in my professional life.</p>
+        <div class="testi-card-footer">
+          <div class="testi-avatar-initials">LC</div>
+          <div class="testi-meta"><strong>Lovely Castillo</strong><span>BS Information Technology, 2022</span></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-icon">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-card-text">The IT Automation track opened my eyes to what technology can do. From scripting to intelligent systems — it's a game-changer, and STI Calamba delivers it excellently.</p>
+        <div class="testi-card-footer">
+          <div class="testi-avatar-initials">RM</div>
+          <div class="testi-meta"><strong>Ramon Mendoza</strong><span>BS Information Technology, 2025</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-add-wrapper">
+      <button class="testi-add-btn" onclick="openTestiModal()">+ Share Your Experience</button>
+    </div>
   </div>
 
 </section>
 
-<script>
-
-/* ================= HEADER EFFECT ================= */
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", updateHeader);
-
-function updateHeader(){
-
-  const activeSection =
-    document.querySelector(".page-section.active-section");
-
-  /* IF NOT HOME = ALWAYS SOLID HEADER */
-
-  if(activeSection.id !== "home"){
-
-    header.classList.add("scrolled");
-
-  }else{
-
-    /* HOME PAGE BEHAVIOR */
-
-    if(window.scrollY > 50){
-      header.classList.add("scrolled");
-    }else{
-      header.classList.remove("scrolled");
-    }
-
-  }
-
-}
-
-/* ================= SECTION NAVIGATION ================= */
-
-function showSection(sectionId){
-
-  const sections =
-    document.querySelectorAll(".page-section");
-
-  sections.forEach(section => {
-    section.classList.remove("active-section");
-  });
-
-  document
-    .getElementById(sectionId)
-    .classList.add("active-section");
-
-  /* UPDATE HEADER STATE */
-
-  updateHeader();
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-/* IMAGE SLIDER */
-
-const images = [
-  "grouppic.png",
-  "grouppic.jpg",
-  "grouppic1.jpg",
-  "grouppic2.jpg"
-];
-
-let currentIndex = 0;
-
-function changeImage(direction){
-
-  currentIndex += direction;
-
-  if(currentIndex < 0){
-    currentIndex = images.length - 1;
-  }
-
-  if(currentIndex >= images.length){
-    currentIndex = 0;
-  }
-
-  document.getElementById("welcomeImg").src = images[currentIndex];
-
-}
-
-/* ================= HOVER NEXT PHOTO SLIDER ================= */
-
-const slider = document.getElementById("newsSlider");
-
-const newsData = [
-
-  {
-    image: "news1.jpg",
-    title: "𝐂𝐀𝐏𝐒𝐓𝐎𝐍𝐄 𝐏𝐑𝐎𝐏𝐎𝐒𝐀𝐋 𝐃𝐄𝐅𝐄𝐍𝐒𝐄 𝐇𝐈𝐆𝐇𝐋𝐈𝐆𝐇𝐓𝐒 ",
-    desc: "Confidence presented. Ideas defended. Futures built. "
-  },
-
-  {
-    image: "news2.jpg",
-    title: "𝐂𝐎𝐃𝐄𝐅𝐄𝐒𝐓 𝐍𝐀𝐓𝐈𝐎𝐍𝐀𝐋 𝐅𝐈𝐍𝐀𝐋𝐈𝐒𝐓 𝟐𝟎𝟐𝟔",
-    desc: "To our amazing CodeFest National Level participants, thank you"
-  },
-
-  {
-    image: "news3.jpg",
-    title: "𝐂𝐨𝐧𝐠𝐫𝐚𝐭𝐮𝐥𝐚𝐭𝐢𝐨𝐧𝐬 𝐀𝐠𝐢𝐥𝐞 𝐓𝐞𝐜𝐡! 🎉🏆",
-    desc: "All the hard work, sleepless nights, and determination have paid off! "
-  },
-
-  {
-    image: "news4.jpg",
-    title: "𝐖𝐞 𝐩𝐫𝐨𝐮𝐝𝐥𝐲 𝐩𝐫𝐞𝐬𝐞𝐧𝐭 𝐨𝐮𝐫 𝐈𝐓 𝐬𝐭𝐮𝐝𝐞𝐧𝐭 𝐫𝐞𝐩𝐫𝐞𝐬𝐞𝐧𝐭𝐚𝐭𝐢𝐯𝐞𝐬 𝐚𝐬 𝐭𝐡𝐞𝐲 𝐭𝐚𝐤𝐞 𝐨𝐧 𝐂𝐨𝐝𝐞𝐟𝐞𝐬𝐭",
-    desc: "As they step into this competition, they represent the excellence and determination of our team."
-  },
-
-  {
-    image: "news5.jpg",
-    title: "𝐂𝐚𝐥𝐥𝐢𝐧𝐠 𝐀𝐥𝐥 𝐕𝐚𝐥𝐨𝐫𝐚𝐧𝐭 𝐀𝐠𝐞𝐧𝐭𝐬",
-    desc: "We will be conducting a Valorant Dry Run to prepare for the upcoming tournament"
-  }
-
-];
-
-/* CREATE CARD */
-
-function createNewsCard(news){
-
-  return `
-
-    <div class="news-card">
-
-      <img src="${news.image}" alt="news">
-
-      <div class="news-overlay">
-
-        <div class="news-content">
-
-          <h3>${news.title}</h3>
-
-          <p>${news.desc}</p>
-
-        </div>
-
+<!-- ===== TESTIMONIAL MODAL ===== -->
+<div class="testi-modal-overlay" id="testiModalOverlay" onclick="closeTestiModalOutside(event)">
+  <div class="testi-modal">
+    <button class="testi-modal-close" onclick="closeTestiModal()">×</button>
+    <h3>Share Your Story</h3>
+    <p class="modal-sub">Your experience inspires future STIans.</p>
+    <div style="display:flex;gap:16px;margin-bottom:0;">
+      <div class="cf-group" style="flex:1;margin-bottom:18px;">
+        <label>First Name</label>
+        <input type="text" id="tm-fname" placeholder="Juan">
       </div>
-
+      <div class="cf-group" style="flex:1;margin-bottom:18px;">
+        <label>Last Name</label>
+        <input type="text" id="tm-lname" placeholder="Dela Cruz">
+      </div>
     </div>
-
-  `;
-}
-
-/* ADD ALL CARDS */
-
-let cardsHTML = "";
-
-newsData.forEach(news => {
-  cardsHTML += createNewsCard(news);
-});
-
-slider.innerHTML = cardsHTML;
-
-/* ================= SLIDE SETTINGS ================= */
-
-let currentSlide = 0;
-
-const cardWidth =
-  slider.querySelector(".news-card").offsetWidth + 30;
-
-/* HOVER = NEXT */
-
-slider.addEventListener("mouseenter", () => {
-
-  slider.autoSlide = setInterval(() => {
-
-    currentSlide++;
-
-    if(currentSlide >= newsData.length - 1){
-      currentSlide = 0;
-    }
-
-    slider.scrollTo({
-      left: currentSlide * cardWidth,
-      behavior: "smooth"
-    });
-
-  }, 2000);
-
-});
-
-/* STOP WHEN CURSOR LEAVES */
-
-slider.addEventListener("mouseleave", () => {
-
-  clearInterval(slider.autoSlide);
-
-});
-</script>
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer-section">
-
-  <div class="footer-overlay">
-
-    <div class="footer-content">
-
-      <!-- LEFT COLUMN -->
-
-      <div class="footer-column">
-
-        <h3>Calamba</h3>
-
-        <p>
-          Purok 1 National Hi-Way,
-          Barangay Uno,
-          Calamba, Philippines, 4027
-
-          <br><br>
-
-          0998 964 0644
-        </p>
-
-        <br>
-
-        <p>
-          STI Academic Center - STI CALAMBA
-          has been providing quality education
-          for more than 31 years now.
-        </p>
-
+    <div class="cf-group">
+      <label>Course &amp; Year Graduated</label>
+      <input type="text" id="tm-course" placeholder="BS Information Technology, 2025">
+    </div>
+    <div class="cf-group">
+      <label>Your Rating</label>
+      <div class="star-rating-input" id="starRating">
+        <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
       </div>
+    </div>
+    <div class="cf-group">
+      <label>Your Testimonial</label>
+      <textarea id="tm-message" rows="4" placeholder="Share your experience at STI Calamba..."></textarea>
+    </div>
+    <button class="modal-submit-btn" onclick="submitTestimonial()">Submit Testimonial</button>
+  </div>
+</div>
 
-      <!-- CENTER COLUMN -->
-
+<!-- ===== FOOTER ===== -->
+<footer class="footer-section">
+  <div class="footer-overlay">
+    <div class="footer-content">
       <div class="footer-column">
-
+        <h3>Calamba</h3>
+        <p>Purok 1 National Hi-Way, Barangay Uno, Calamba, Philippines, 4027<br><br>0998 964 0644</p>
+        <br>
+        <p>STI Academic Center - STI CALAMBA has been providing quality education for more than 31 years now.</p>
+      </div>
+      <div class="footer-column">
         <h3>Quick Links</h3>
-
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Use</a>
         <a href="#">Sitemap</a>
-
       </div>
-
-      <!-- RIGHT COLUMN -->
-
       <div class="footer-column">
-
         <h3>Affiliates</h3>
-
         <a href="#">STI College</a>
         <a href="#">STI West Negros University</a>
         <a href="#">STI Academic Center</a>
-
       </div>
-
     </div>
-
-    <!-- FOOTER BOTTOM -->
-
     <div class="footer-bottom">
-
-      <p>
-        STI College Calamba © 2026.
-        All Rights Reserved.
-      </p>
-
+      <p>STI College Calamba © 2026. All Rights Reserved.</p>
     </div>
-
   </div>
-
 </footer>
+
+<!-- ===== LIGHTBOX MODAL ===== -->
+<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&#10005;</button>
+  <div class="lightbox-img-wrap">
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <div class="lightbox-info">
+    <div class="lightbox-tag" id="lightboxTag"></div>
+    <h3 id="lightboxTitle"></h3>
+    <p id="lightboxDesc"></p>
+  </div>
+</div>
+
+<script>
+/* ===== LIGHTBOX ===== */
+function openLightbox(imgSrc, title, desc, tag){
+  document.getElementById('lightboxImg').src = imgSrc;
+  document.getElementById('lightboxTitle').textContent = title;
+  document.getElementById('lightboxDesc').textContent = desc;
+  document.getElementById('lightboxTag').textContent = tag;
+  document.getElementById('lightboxOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightboxOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeLightboxOutside(e){
+  if(e.target === document.getElementById('lightboxOverlay')) closeLightbox();
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.fac-card').forEach(card => {
+    card.addEventListener('click', function(){
+      const img = this.querySelector('.fac-card-img');
+      const title = this.querySelector('h3')?.textContent || '';
+      const desc = this.querySelector('p')?.textContent || '';
+      const tag = this.querySelector('.fac-card-tag')?.textContent || '';
+      if(img) openLightbox(img.src, title, desc, tag);
+    });
+  });
+});
+
+/* ===== HEADER SCROLL ===== */
+const header = document.querySelector("header");
+window.addEventListener("scroll",()=>{
+  header.classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* ===== SECTION NAV ===== */
+function showSection(id){
+  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active-section'));
+  document.getElementById(id).classList.add('active-section');
+  if(id==='facilities'){
+    document.querySelectorAll('.floor-section').forEach(f=>f.classList.remove('active-floor'));
+    document.getElementById('ground-floor').classList.add('active-floor');
+    document.querySelectorAll('.floor-nav-btn').forEach((b,i)=>b.classList.toggle('active-tab',i===0));
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goToFacility(id, btn){
+  document.querySelectorAll('.floor-section').forEach(s=>s.classList.remove('active-floor'));
+  document.getElementById(id).classList.add('active-floor');
+  if(btn){
+    document.querySelectorAll('.floor-nav-btn').forEach(b=>b.classList.remove('active-tab'));
+    btn.classList.add('active-tab');
+  }
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+/* ===== CONTACT SUBMIT ===== */
+function handleNewContactSubmit(){
+  const fname=document.getElementById('cf-fname').value.trim();
+  const email=document.getElementById('cf-email').value.trim();
+  const message=document.getElementById('cf-message').value.trim();
+  if(!fname||!email||!message){alert('Please fill in all required fields.');return;}
+  const s=document.getElementById('cfSuccess');
+  s.style.display='block';
+  document.getElementById('cf-fname').value='';
+  document.getElementById('cf-email').value='';
+  document.getElementById('cf-phone').value='';
+  document.getElementById('cf-inquiry').selectedIndex=0;
+  document.getElementById('cf-message').value='';
+  setTimeout(()=>{s.style.display='none';},5000);
+}
+
+/* ===== IMAGE SLIDER ===== */
+const images=["grouppic.png","grouppic.jpg","grouppic1.jpg","grouppic2.jpg"];
+let currentIndex=0;
+function changeImage(dir){
+  currentIndex+=dir;
+  if(currentIndex<0) currentIndex=images.length-1;
+  if(currentIndex>=images.length) currentIndex=0;
+  document.getElementById("welcomeImg").src=images[currentIndex];
+}
+
+/* ===== NEWS SLIDER ===== */
+const slider=document.getElementById("newsSlider");
+const newsData=[
+  {image:"news1.jpg",title:"𝐂𝐈𝐍𝐄𝐏𝐄𝐋𝐈𝐊𝐔𝐋𝐀: 𝐁𝐌𝐌𝐀 𝐅𝐈𝐋𝐌 𝐅𝐄𝐒𝐓𝐈𝐕𝐀𝐋 2026",desc:"Tickets are now sale at the Main Lobby of STI College Calamba."},
+  {image:"news2.jpg",title:"Heto na, may ESPASYO na ba ang lahat?",desc:"ESPASYO: Kahit Sino P'wede A Community Performance Arts Event."},
+  {image:"news3.jpg",title:"𝐍𝐨𝐰 𝐚𝐜𝐜𝐞𝐩𝐭𝐢𝐧𝐠 𝐒𝐞𝐧𝐢𝐨𝐫 𝐇𝐢𝐠𝐡 𝐚𝐧𝐝 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 𝐞𝐧𝐫𝐨𝐥𝐞𝐞𝐬",desc:"Industry-relevant skills and supportive campus environment."},
+  {image:"news4.jpg",title:"𝗔𝗥𝗘 𝗬𝗢𝗨 𝗥𝗘𝗔𝗗𝗬 𝗧𝗢 𝗦𝗛𝗔𝗞𝗘 𝗨𝗣 𝗧𝗛𝗘 𝗖𝗢𝗠𝗣𝗘𝗧𝗜𝗧𝗜𝗢𝗡?",desc:"Join the Tea-rific Cup Milktea Competition this THM Week 2026."},
+  {image:"news5.jpg",title:"𝐂𝐚𝐬𝐡𝐢𝐞𝐫 𝐎𝐟𝐟𝐢𝐜𝐞 𝐀𝐝𝐯𝐢𝐬𝐨𝐫𝐲",desc:"Cashier's Office transactions unavailable from May 25–27, 2026."}
+];
+slider.innerHTML=newsData.map(n=>`<div class="news-card"><img src="${n.image}" alt="news"><div class="news-overlay"><div class="news-content"><h3>${n.title}</h3><p>${n.desc}</p></div></div></div>`).join('');
+let currentSlide=0;
+const cardWidth=slider.querySelector(".news-card").offsetWidth+30;
+slider.addEventListener("mouseenter",()=>{slider.autoSlide=setInterval(()=>{currentSlide++;if(currentSlide>=newsData.length-1) currentSlide=0;slider.scrollTo({left:currentSlide*cardWidth,behavior:"smooth"});},2000);});
+slider.addEventListener("mouseleave",()=>{clearInterval(slider.autoSlide);});
+
+/* ===== TESTIMONIAL MODAL ===== */
+let selectedStars=5;
+document.querySelectorAll('#starRating span').forEach(star=>{
+  star.addEventListener('click',function(){
+    selectedStars=parseInt(this.dataset.val);
+    document.querySelectorAll('#starRating span').forEach((s,i)=>s.classList.toggle('active',i<selectedStars));
+  });
+  star.addEventListener('mouseenter',function(){
+    const val=parseInt(this.dataset.val);
+    document.querySelectorAll('#starRating span').forEach((s,i)=>s.classList.toggle('active',i<val));
+  });
+});
+document.getElementById('starRating').addEventListener('mouseleave',()=>{
+  document.querySelectorAll('#starRating span').forEach((s,i)=>s.classList.toggle('active',i<selectedStars));
+});
+document.querySelectorAll('#starRating span').forEach((s,i)=>s.classList.toggle('active',i<5));
+
+function openTestiModal(){document.getElementById('testiModalOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeTestiModal(){document.getElementById('testiModalOverlay').classList.remove('open');document.body.style.overflow='';}
+function closeTestiModalOutside(e){if(e.target===document.getElementById('testiModalOverlay')) closeTestiModal();}
+
+function submitTestimonial(){
+  const fname=document.getElementById('tm-fname').value.trim();
+  const lname=document.getElementById('tm-lname').value.trim();
+  const course=document.getElementById('tm-course').value.trim();
+  const message=document.getElementById('tm-message').value.trim();
+  if(!fname||!lname||!message){alert('Please fill in your name and testimonial.');return;}
+  const card=document.createElement('div');
+  card.className='testi-card';
+  card.style.animation='fadeIn 0.5s ease';
+  card.innerHTML=`<div class="testi-quote-icon">"</div><div class="testi-stars">${'★'.repeat(selectedStars)+'☆'.repeat(5-selectedStars)}</div><p class="testi-card-text">${message}</p><div class="testi-card-footer"><div class="testi-avatar-initials">${(fname[0]+lname[0]).toUpperCase()}</div><div class="testi-meta"><strong>${fname+' '+lname}</strong><span>${course||'BS Information Technology'}</span></div></div>`;
+  document.getElementById('testiGrid').prepend(card);
+  document.getElementById('tm-fname').value='';
+  document.getElementById('tm-lname').value='';
+  document.getElementById('tm-course').value='';
+  document.getElementById('tm-message').value='';
+  selectedStars=5;
+  document.querySelectorAll('#starRating span').forEach((s,i)=>s.classList.toggle('active',i<5));
+  closeTestiModal();
+}
+</script>
+
 </body>
 </html>
